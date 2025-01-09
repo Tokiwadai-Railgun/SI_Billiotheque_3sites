@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/handlers/testhandler.ts","./src/routes/login.ts","./src/routes/testroute.ts"],"version":"5.7.2"}

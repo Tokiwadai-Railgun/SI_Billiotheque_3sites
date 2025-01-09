@@ -1,0 +1,15 @@
+[Login test]
+POST http://localhost:3000/login
+DATA {"name": "tesdtPerson", "password": "none"}
+200
+{"token": "sample"}
+
+[Random Request]
+GET http://localhost:3000/test
+200
+
+[Wrong login request]
+POST http://localhost:3000/login
+DATA {"wrong-prop": "test"}
+400
+{"message": "Missing property in the body"}

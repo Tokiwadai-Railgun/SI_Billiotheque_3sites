@@ -1,0 +1,31 @@
+{
+  "name": "si_bibliotheque_3sites",
+  "version": "1.0.0",
+  "description": "a simple api for a school project",
+  "main": "index.js",
+  "scripts": {
+    "test": "api-tester requests.http",
+    "start": "npm run build && node ./dist/index.js",
+    "start:dev": "nodemon ./src/index.ts",
+    "build": "tsc --build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Tokiwadai-Railgun/SI_Bibliotheque_3Sites.git"
+  },
+  "author": "Fuyuki",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Tokiwadai-Railgun/SI_Bibliotheque_3Sites/issues"
+  },
+  "homepage": "https://github.com/Tokiwadai-Railgun/SI_Bibliotheque_3Sites#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/express-session": "^1.18.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "express-session": "^1.18.1"
+  }
+}
