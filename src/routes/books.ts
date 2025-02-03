@@ -1,5 +1,7 @@
 // Will handle response to get all books
 import { Router } from "express";
+import { db } from "../database";
+import { BookUpdate, Book, NewBook } from "../types/types";
 const router = Router();
 
 // Sample data to simulate a database
@@ -31,8 +33,32 @@ const books = [
 ];
 
 // Define a GET route to fetch book information
-router.get('/', (_req, res) => {
-  res.json({books: books});
+router.get('/getAll', async function(_req, res) {
+    const response = await db.selectFrom('books').leftJoin("site", "site.id", "site_id").selectAll().execute()
+
+    res.send(response)
 });
+
+router.get('/getOne/:ISBN', async function(req, res) {
+    const response = await db.selectFrom('books').leftJoin("site", "site.id", "site_id").where('isbn','=', req.params.ISBN).selectAll().executeTakeFirst()
+
+    res.send(response)
+})
+
+router.post('/add', async function(req, res) {
+    // verify json content
+    const body = req.body
+
+    if (!body.isbn || !body.title || !body.author || !body.description || !body.cover || !body.site_id) {
+        res.status(400).send({message: "Missing required fields"})
+        return
+    }
+
+    body.site_id = parseInt(body.site_id)
+
+    // save to database
+    db.insertInto('books').values(books as NewBook).execute()
+    res.send({requestBody: req.body})
+})
 
 export default router;
