@@ -33,7 +33,7 @@ const books = [
 ];
 
 // Define a GET route to fetch book information
-router.get('/getAll', async function(_req, res) {
+router.get('/', async function(_req, res) {
     const response = await db.selectFrom('books').leftJoin("site", "site.id", "site_id").selectAll().execute()
 
     res.send(response)
@@ -57,7 +57,7 @@ router.post('/add', async function(req, res) {
     body.site_id = parseInt(body.site_id)
 
     // save to database
-    db.insertInto('books').values(books as NewBook).execute()
+    // db.insertInto('books').values(books as NewBook).execute()
     res.send({requestBody: req.body})
 })
 

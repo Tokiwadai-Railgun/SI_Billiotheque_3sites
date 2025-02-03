@@ -20,6 +20,10 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
+-- Create user remote
+CREATE USER remote PASSWORD 'remote';
+
+
 --
 -- Name: address; Type: TABLE; Schema: public; Owner: postgres
 --

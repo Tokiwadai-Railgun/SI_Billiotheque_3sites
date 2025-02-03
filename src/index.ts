@@ -34,7 +34,7 @@ app.get('/test', (request: Request, response: Response) => {
 
 function checkLoginMiddleware(request: Request, response: Response, next: NextFunction) {
 	// Check for the session token in the database
-	if (!request.session.user) response.status(401).json({"message": "not logged in"})
+	// if (!request.session.user) response.status(401).json({"message": "not logged in"})
 	console.log(request.session)
 	console.log('Checking login state')
 	next()
