@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bibliothèque - Catalogue</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="menu">
+            <li class="item"><a href="index.html">Accueil</a></li>
+            <li class="item"><a href="catalogue.html" class="active">Catalogue</a></li>
+            <li class="item"><a href="inventaire.html">Inventaire</a></li>
+            <li class="item"><a href="contact.html">Contact</a></li>
+            <li class="item"><a href="compte.html">Mon Compte</a></li>
+        </ul>
+    </nav>
+
+    <div class="filters">
+        <select class="filter-select">
+            <option value="all">Toutes les catégories</option>
+            <option value="fiction">Fiction</option>
+            <option value="non-fiction">Non-Fiction</option>
+            <option value="jeunesse">Jeunesse</option>
+            <option value="bd">BD & Mangas</option>
+        </select>
+        <input type="text" placeholder="Rechercher..." class="filter-search">
+    </div>
+
+    <main class="bento-grid books-grid">
+        <!-- Book 1 -->
+        <div class="book-card">
+            <div class="availability available"></div>
+            <img src="/api/placeholder/180/250" alt="Book cover">
+            <h3>Le Petit Prince</h3>
+            <p>Antoine de Saint-Exupéry</p>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book-card">
+            <div class="availability borrowed"></div>
+            <img src="/api/placeholder/180/250" alt="Book cover">
+            <h3>1984</h3>
+            <p>George Orwell</p>
+        </div>
+
+        <!-- Add more books... -->
+        <div class="book-card">
+            <div class="availability available"></div>
+            <img src="/api/placeholder/180/250" alt="Book cover">
+            <h3>L'Étranger</h3>
+            <p>Albert Camus</p>
+        </div>
+
+        <div class="book-card">
+            <div class="availability reserved"></div>
+            <img src="/api/placeholder/180/250" alt="Book cover">
+            <h3>Dune</h3>
+            <p>Frank Herbert</p>
+        </div>
+
+        <!-- Add even more books here... -->
+    </main>
+</body>
+</html>
