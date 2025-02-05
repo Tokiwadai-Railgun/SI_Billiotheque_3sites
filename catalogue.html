@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="catalogue.css">
     <title>Bibliothèque - Catalogue</title>
 </head>
 <body>
@@ -16,51 +16,46 @@
             <li class="item"><a href="compte.html">Mon Compte</a></li>
         </ul>
     </nav>
-
-    <div class="filters">
-        <select class="filter-select">
-            <option value="all">Toutes les catégories</option>
-            <option value="fiction">Fiction</option>
-            <option value="non-fiction">Non-Fiction</option>
-            <option value="jeunesse">Jeunesse</option>
-            <option value="bd">BD & Mangas</option>
-        </select>
-        <input type="text" placeholder="Rechercher..." class="filter-search">
-    </div>
-
-    <main class="bento-grid books-grid">
-        <!-- Book 1 -->
-        <div class="book-card">
-            <div class="availability available"></div>
-            <img src="/api/placeholder/180/250" alt="Book cover">
-            <h3>Le Petit Prince</h3>
-            <p>Antoine de Saint-Exupéry</p>
-        </div>
-
-        <!-- Book 2 -->
-        <div class="book-card">
-            <div class="availability borrowed"></div>
-            <img src="/api/placeholder/180/250" alt="Book cover">
-            <h3>1984</h3>
-            <p>George Orwell</p>
-        </div>
-
-        <!-- Add more books... -->
-        <div class="book-card">
-            <div class="availability available"></div>
-            <img src="/api/placeholder/180/250" alt="Book cover">
-            <h3>L'Étranger</h3>
-            <p>Albert Camus</p>
-        </div>
-
-        <div class="book-card">
-            <div class="availability reserved"></div>
-            <img src="/api/placeholder/180/250" alt="Book cover">
-            <h3>Dune</h3>
-            <p>Frank Herbert</p>
-        </div>
-
-        <!-- Add even more books here... -->
-    </main>
+    <main>
+        <section id="hero-section">
+          <h1>Acceuil bibliothèque de batard</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </section>
+        <section>
+            <div id="filter">
+                <div id="alphabetical-filter">
+                    <label for="filter">Ordre alphabétique:</label>
+                    <select name="alphabetical" id="alphabetical-select">
+                      <option value="all">Aucun</option>
+                      <option value="alphabetical">A - Z</option>
+                      <option value="reversealphabetical">Z - A</option>
+                    </select>
+                </div>
+                
+              
+                <!-- Filtrage par catégorie (affiché quand "Catégorie" est sélectionné) -->
+                <div id="category-filter">
+                  <label for="category-select">Catégorie:</label>
+                  <select name="category" id="category-select">
+                    <option value="all">Toutes</option>
+                  </select>
+                </div>
+              
+                <!-- Filtrage par lieu (affiché quand "Lieu" est sélectionné) -->
+                <div id="location-filter">
+                  <label for="location-select">Lieu:</label>
+                  <select name="location" id="location-select">
+                    <option value="all">Aucun</option>
+                  </select>
+                </div>
+              </div>
+          <ul id="book-display">
+  
+          </ul>
+        </section>
+      </main>
+      <script src="catalogue.js" defer></script>
 </body>
 </html>

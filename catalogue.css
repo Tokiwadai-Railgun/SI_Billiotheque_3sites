@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: url(mainmenu.jpeg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    padding: 80px 20px 20px 20px;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: auto;
+    min-width: 500px;
+    max-width: 650px;
+  }
+  
+  .menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+  
+  .item {
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .item a:hover{
+    color: #fff;
+    background: #2258c3;
+  }
+  .item a.active{
+    color: #fff;
+    background: #229bc3;
+  }
+  
+#book-display{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1500px;
+    margin: auto;
+    padding: 0;
+  }
+  
+  .book{
+    background-color: #FFFBE6a0;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border-top: 1px solid #FFFBE6;
+    border-left: 1px solid #FFFBE6; 
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+  }
+
+  #book-display{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1500px;
+    margin: auto;
+    padding: 0;
+  }
+  
+  .book{
+    background-color: #FFFBE6a0;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border-top: 1px solid #FFFBE6;
+    border-left: 1px solid #FFFBE6; 
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+  }
