@@ -33,17 +33,12 @@ export type Site = Selectable<SiteTable>
 export type NewSite = Insertable<SiteTable>
 export type SiteUpdate = Updateable<SiteTable>
 
-export enum PersonType {
-	"customer",
-	"employee"
-}
-
 export interface PersonTable {
 		id: string,
 		first_name: string,
 		last_name: string,
 		address_id: number,
-		role: PersonType
+		role: string
 }
 
 export type Person = Selectable<PersonTable>
