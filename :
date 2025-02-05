@@ -34,18 +34,17 @@ router.post('/add', async function(req, res) {
 router.post('/return', async function(req, res) {
     // verify json content
     const body = req.body
+    // check if the book is borrowed by the user
+    
+    db.selectFrom('books').where('isbn', '=', body.isbn).select("borrower_id").executeTakeFirst()
+
     if (!body.isbn || !body.userId) {
         res.status(400).send({message: "Missing required fields"})
         return
     }
-    
-    // check if the book is borrowed by the user
-    const borrowerId = await db.selectFrom('books').where('isbn', '=', body.isbn).select("borrower_id").executeTakeFirst()
-    if (borrowerId != body.userId) res.status(401).send({message: "User did not borrowed the book"})
-
 
     // save to database
-    db.updateTable('books').set({ borrower_id: null }).where('isbn', '=', body.isbn).execute()
+    db.updateTable('books').set({ borrower_id: body.userId }).where('isbn', '=', body.isbn).execute()
         .then(x => res.send({messae: "Book Borrowed"}))
         .catch(x => {
             res.status(500).send({message: "Error borrowing book"})
