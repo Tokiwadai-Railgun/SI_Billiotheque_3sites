@@ -12,6 +12,7 @@ import testRoute from './routes/testRoute'
 import login  from './routes/login'
 import books from "./routes/books";
 import newbook from './routes/newbook';
+import borrow from "./routes/borrow"
 
 app.use(express.json())
 app.use(session({
@@ -44,6 +45,7 @@ function checkLoginMiddleware(request: Request, response: Response, next: NextFu
 app.use(checkLoginMiddleware);
 app.use("/books", books);
 app.use("/newbook", newbook);
+app.use("/borrow", borrow)
 
 app.use('/test', testRoute)
 

@@ -4,7 +4,8 @@ export interface Database {
 		books: BookTable,
 		site: SiteTable,
 		person: PersonTable,
-		customer: CustomerTable
+		customer: CustomerTable,
+		authentication: AuthTable
 }
 
 export interface BookTable {
@@ -59,3 +60,9 @@ export interface CustomerTable {
 export type Customer = Selectable<CustomerTable>
 export type NewCustomer = Insertable<CustomerTable>
 export type UpdateCustomer = Updateable<CustomerTable>
+
+export interface AuthTable {
+		person_id: number,
+		username: string,
+		password: string
+}

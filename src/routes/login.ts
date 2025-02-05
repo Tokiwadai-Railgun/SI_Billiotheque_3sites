@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
-import sql from "../db"
-const router = Router()
+import argon2 from 'argon2';
+import { db } from "../database";
 
+const router = Router()
 
 function loginMiddleware(request: Request, response: Response, next: NextFunction) {
 		const body = request.body;
@@ -25,18 +26,10 @@ interface User {
 
 }
 
-async function verifyCredentials(user: Authentication): Promise<User | null> {
-		const result = await sql`SELECT * FROM authentication where username = ${user.username};`
-		if (result.length == 1) {
-				const first = result.shift();
-				if (first && first.password == user.password) {
-						console.log("returning", first)
-						return {username: first.username, id: first.person_id, password: first.password}
-				} else {
-						return null
-				}
-		}
-		return null
+async function verifyCredentials(user: Authentication): Promise<boolean> {
+		// const result = await sql`SELECT * FROM authentication where username = ${user.username};`
+		db.selectFrom("authentication").select("password").where("username", "=", user.username)
+		return argon2.verify(result.password, user.password)
 }
 
 router.post('/', loginMiddleware, async (req: Request, res: Response) => {
