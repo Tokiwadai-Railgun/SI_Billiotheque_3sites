@@ -13,7 +13,7 @@ router.get('/:userId', async function(req, res) {
         res.status(400).send({message: "Invalid user id"})
         return
     }
-    const response = await db.selectFrom('person').leftJoin("books", "books.borrower_id", "person.id").where('person.id','=', req.params.userId).selectAll().executeTakeFirst()
+    const response = await db.selectFrom('person').leftJoin("books", "books.borrower_id", "person.id").where('person.id','=', req.params.userId).selectAll().execute()
 
     res.send(response)
 })
