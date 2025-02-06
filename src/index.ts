@@ -39,9 +39,13 @@ app.get('/test', (request: Request, response: Response) => {
 
 function checkLoginMiddleware(request: Request, response: Response, next: NextFunction) {
 	// Check for the session token in the database
-	if (!request.session.user) response.status(401).json({"message": "not logged in"})
-	console.log('Checking login state')
-	next()
+	if (!request.session.user) {
+		response.status(401).json({ "message": "not logged in" });
+		return
+	}
+	
+	console.log('Checking login state');
+	next();
 }
 
 export async function checkEmployeePermissions(request: Request, response: Response, next: NextFunction) {

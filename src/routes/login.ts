@@ -55,6 +55,7 @@ router.post('/', loginMiddleware, async (req: Request, res: Response) => {
 		if (verified) {
 				console.log("verified !")
 				req.session.user = {username: verified.username, id: verified.id.toString()};
+				console.log(verified.role)
 				res.cookie('role', verified.role)
 				res.setHeader("Set-Cookie", `role=${verified.role}`)
 				res.status(201).json({username: verified.username})
