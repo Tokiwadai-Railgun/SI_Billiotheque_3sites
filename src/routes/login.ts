@@ -58,7 +58,9 @@ router.post('/', loginMiddleware, async (req: Request, res: Response) => {
 				console.log(verified.role)
 				res.cookie('role', verified.role)
 				res.setHeader("Set-Cookie", `role=${verified.role}`)
-				res.status(201).json({username: verified.username})
+				console.log(res.getHeader("Set-Cookie"))
+				console.log("SessionId : ", req.session.id)
+				res.status(201).json({username: verified.username, role: verified.role})
 		} else {
 				console.log("ERROR")
 				res.status(401).json({"message": "Wrong username or password"})

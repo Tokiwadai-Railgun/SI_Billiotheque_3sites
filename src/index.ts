@@ -16,17 +16,23 @@ import newbook from './routes/newbook';
 import borrow from "./routes/borrow"
 import { db } from './database'
 
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:8000",
+  credentials: true 
+}));
 
 app.use(express.json())
 app.use(session({
-	secret: "testSecret",
-	saveUninitialized: false,
-	resave: false,
-	cookie: {
-		maxAge: 60000 * 60
-	}
-}))
+  secret: "testSecret",
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+    maxAge: 60000 * 60,
+    secure: false,  
+    httpOnly: true,
+    sameSite: "lax"
+  }
+}));
 
 // login route is special, no login required so we define it here
 app.use('/login', login)
@@ -38,8 +44,11 @@ app.get('/test', (request: Request, response: Response) => {
 })
 
 function checkLoginMiddleware(request: Request, response: Response, next: NextFunction) {
+	console.log("SessionId : ", request.session.id)
+	console.log("cookies ", request.cookies)
 	// Check for the session token in the database
 	if (!request.session.user) {
+		console.log("not logged in")
 		response.status(401).json({ "message": "not logged in" });
 		return
 	}
